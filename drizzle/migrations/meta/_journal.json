@@ -1,0 +1,20 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1794382670536,
+      "tag": "0000_kasir_toko_telur",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1794383232628,
+      "tag": "0001_fix_create_sale_totals",
+      "breakpoints": true
+    }
+  ]
+}
