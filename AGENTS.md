@@ -28,3 +28,10 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Project rules
+
+- Checkout and stock changes go through the `create_sale` / `adjust_stock` database functions, never direct table writes — they lock rows and keep stock, sale items and stock history consistent in one transaction.
+- Signed-in pages live under `src/routes/_authenticated/` (client-only) and read data with the browser client + React Query options in `src/lib/store-api.ts` — the session lives in localStorage, so SSR cannot fetch it.
+- Daily reporting buckets use the shop's timezone inside SQL functions (`sales_daily`, `top_products`, `payment_breakdown`) so totals don't drift with the browser's timezone or the 1000-row API limit.
+- Cart math lives in `src/lib/cart.ts` with tests in `src/lib/cart.test.ts` — keep pricing rules there and tested.
